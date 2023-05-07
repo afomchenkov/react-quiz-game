@@ -27,7 +27,7 @@ const Form: FC<FormProps> = ({ question }) => {
   });
 
   const isCorrectAnswer = async (answer: string) => {
-    const currentAnswerSha1 = await generateSHA1Hash(answer);
+    const currentAnswerSha1 = await generateSHA1Hash(answer.toLowerCase());
     return currentAnswerSha1 === answerSha1;
   }
 
@@ -37,7 +37,7 @@ const Form: FC<FormProps> = ({ question }) => {
       debugLog(JSON.stringify(errors), LogType.Error)
       return;
     }
-
+    
     const isCorrect = await isCorrectAnswer(getValues('answer'));
     if (isCorrect) {
       dispatch(increaseScore());
@@ -45,6 +45,7 @@ const Form: FC<FormProps> = ({ question }) => {
       dispatch(decreaseChances());
       dispatch(saveFailedQuestion(questionHash));
     }
+
     dispatch(saveAnsweredQuestion(questionHash));
     setValue('answer', '');
   };
