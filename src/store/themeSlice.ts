@@ -2,7 +2,7 @@ import { createSlice } from '@reduxjs/toolkit';
 import { Theme } from '../types';
 import { RootState } from './index';
 
-export interface ThemeState {
+export type ThemeState = {
   selectedTheme: Theme;
 }
 

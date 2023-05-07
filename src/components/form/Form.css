@@ -1,0 +1,32 @@
+.qz-form {
+  display: flex;
+  flex-direction: column;
+  margin-top: 2em;
+  width: 60%;
+}
+
+.qz-form input {
+  margin: .5em;
+  background-color: var(--background-color-input);
+}
+
+.qz-form input[type=text] {
+  padding: 5px;
+  border: 2px solid #ccc;
+  -webkit-border-radius: 5px;
+  border-radius: 5px;
+}
+
+.qz-form input[type=text]:focus {
+  border-color: white;
+}
+
+.qz-form input[type=submit] {
+  padding: 5px 15px;
+  background: #ccc;
+  border: 0 none;
+  cursor: pointer;
+  -webkit-border-radius: 5px;
+  border-radius: 5px;
+  color: var(--text-primary);
+}
