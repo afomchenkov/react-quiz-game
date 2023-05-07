@@ -3,6 +3,7 @@ import Form from '../form/Form';
 import { useCurrentQuestion } from '../../hooks';
 import { FetchQuestionStatus } from '../../types';
 import Loader from '../loader/Loader';
+import { debugLog, LogType } from '../../utils';
 import './Page.css';
 
 const Overlay: FC = () => {
@@ -26,11 +27,12 @@ const QuizPage: FC = () => {
   const { currentQuestion, status } = useCurrentQuestion();
 
   if (status === FetchQuestionStatus.Failed) {
-    return <ErrorPlaceholder />
+    debugLog(`Error page rendered: [status:${status}]`, LogType.Error);
+    return <ErrorPlaceholder />;
   }
 
   if (status === FetchQuestionStatus.Loading || !currentQuestion) {
-    return <Overlay />
+    return <Overlay />;
   }
 
   const { question } = currentQuestion;
