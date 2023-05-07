@@ -1,3 +1,5 @@
+import { sha1 } from 'crypto-hash';
+
 const IS_LOGGING_ENABLED = true;
 
 export enum LogType {
@@ -27,3 +29,5 @@ export const debugLog: DebugLog = (message = '', logType = LogType.Log) => {
       console.error('Undefined: ', message);
   }
 }
+
+export const generateHash = (text: string): Promise<string> => sha1(text);

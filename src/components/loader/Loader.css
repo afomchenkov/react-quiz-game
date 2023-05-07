@@ -1,0 +1,19 @@
+.qz-loader {
+  width: 25px;
+  height: 25px;
+  border: 5px solid #ccc;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotateZ(0deg);
+    border-top: 5px solid #38978d;
+  }
+
+  100% {
+    transform: rotateZ(360deg);
+    border-top: 5px solid #38978d;
+  }
+}
