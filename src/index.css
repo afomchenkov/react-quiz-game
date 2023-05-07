@@ -3,7 +3,7 @@
   --background-color-main: #FFFFFF;
   --background-color-input: #FFFFFF;
   --background-card-color: #FFFFFF;
-  --text-primary: #2c2c2c;
+  --text-primary-color: #2c2c2c;
   --border-color-main: #e8e8e8;
   --loader-color-border: #38978d;
   --border-color-1: #ccc;
@@ -14,7 +14,7 @@
   --background-color-main: rgb(35 39 47 / .8);
   --background-color-input: #f7f7f7;
   --background-card-color: #8297aed6;
-  --text-primary: #2c2c2c;
+  --text-primary-color: #080d0e;
   --border-color-main: #a7a7a763;
   --loader-color-border: #38978d;
   --border-color-1: #ccc;
