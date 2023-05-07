@@ -1,19 +1,46 @@
-import { FC, useEffect } from 'react';
+import { FC } from 'react';
 import Form from '../form/Form';
 import { useCurrentQuestion } from '../../hooks';
+import { FetchQuestionStatus } from '../../types';
+import Loader from '../loader/Loader';
 import './Page.css';
 
-const QuizPage: FC = () => {
-  const { question, answer } = useCurrentQuestion();
+const Overlay: FC = () => {
+  return (
+    <section className='qz-card'>
+      <span>Loading...</span>
+      <Loader />
+    </section>
+  )
+}
 
-  useEffect(() => {
-    console.log('QUIZ PAGE: ', question, answer);
-  }, [question, answer])
+const ErrorPlaceholder: FC = () => {
+  return (
+    <section className='qz-card'>
+      <span>An error has occurred, please try again later...</span>
+    </section>
+  )
+}
+
+const QuizPage: FC = () => {
+  const { currentQuestion, status } = useCurrentQuestion();
+
+  if (status === FetchQuestionStatus.Loading || !currentQuestion) {
+    return <Overlay />
+  }
+
+  if (status === FetchQuestionStatus.Failed) {
+    return <ErrorPlaceholder />
+  }
+
+  const { question } = currentQuestion;
 
   return (
     <section className='qz-card'>
-      <h3>{question}</h3>
-      <Form />
+      <div className='gz-card__title'>
+        <h3>{question}</h3>
+      </div>
+      <Form question={currentQuestion}/>
     </section>
   );
 };

@@ -4,12 +4,19 @@ export enum Theme {
 }
 
 export type QuizQuestion = {
-  answerSha1: string,
-  question: string,
+  answerSha1: string
+  question: string
+  questionHash: string
 }
 
 export type FetchQuestionsResponse<T> = {
-  questions: T[],
+  questions: T[]
+}
+
+export enum FetchQuestionStatus {
+  Idle = 'idle',
+  Loading = 'loading',
+  Failed = 'failed'
 }
 
 export type User = {
