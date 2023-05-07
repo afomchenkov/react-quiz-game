@@ -1,4 +1,3 @@
-import { useEffect } from 'react';
 import {
   setDark,
   setLight,
@@ -7,6 +6,7 @@ import {
 import { getCurrentUser } from '../../store/userSlice';
 import { useAppSelector, useAppDispatch } from '../../store';
 import { Theme } from '../../types';
+import { capitalise } from '../../utils';
 import './NavBar.css';
 
 const NavBar = () => {
@@ -22,7 +22,6 @@ const NavBar = () => {
     }
   }
 
-  const capitalise = (text: string) => text.charAt(0).toUpperCase() + text.slice(1);
   const getThemeToToggleText = (): string => {
     return capitalise(currentTheme === Theme.Dark ? Theme.Light : Theme.Dark);
   }

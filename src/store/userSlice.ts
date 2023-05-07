@@ -4,6 +4,7 @@ import { RootState } from './index';
 
 export type UserState = User;
 
+// preload state from persistent storage after refreshing the page
 const initialState: UserState = {
   score: 0,
   chances: 3,
@@ -32,6 +33,11 @@ export const userSlice = createSlice({
   },
 });
 
-export const { increaseScore, decreaseChances } = userSlice.actions;
+export const {
+  increaseScore,
+  decreaseChances,
+  saveAnsweredQuestion,
+  saveFailedQuestion,
+} = userSlice.actions;
 export const getCurrentUser = (state: RootState) => state.user;
 export default userSlice.reducer;

@@ -1,4 +1,3 @@
-import React, { useState } from 'react';
 import { useAppSelector } from './store';
 import NavBar from './components/nav-bar/NavBar';
 import Layout from './components/layout/Layout';

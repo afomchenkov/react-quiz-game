@@ -8,10 +8,8 @@ import {
   removeQuestion,
   selectQuestions,
 } from '../store/questionsSlice';
+import { hasUserAnsweredQuestion } from '../utils';
 
-const hasAnsweredQuestion = (userAnsweredQuestions: string[] = [], questionHash: string): boolean => {
-  return userAnsweredQuestions.includes(questionHash);
-}
 
 type UseCurrentQuestion = () => {
   currentQuestion: QuizQuestion | null
@@ -20,28 +18,33 @@ type UseCurrentQuestion = () => {
 
 export const useCurrentQuestion: UseCurrentQuestion = () => {
   const [currentQuestion, setCurrentQuestion] = useState<QuizQuestion | null>(null);
-  const { score, chances } = useAppSelector(getCurrentUser);
+  const { score, chances, answeredQuestions } = useAppSelector(getCurrentUser);
   const { remainingQuestions, status } = useAppSelector(selectQuestions);
   const dispatch = useAppDispatch();
 
   useEffect(() => {
-    console.log('Remove question: ', { score, chances });
+    if (status === FetchQuestionStatus.Idle) {
+      const nextQuestion = remainingQuestions[0];
 
+      if (nextQuestion) {
+        const { questionHash } = nextQuestion;
+
+        // remove question if already answered
+        if (hasUserAnsweredQuestion(answeredQuestions, questionHash)) {
+          dispatch(removeQuestion(questionHash));
+        }
+      }
+
+      setCurrentQuestion(nextQuestion);
+    }
+  }, [remainingQuestions, status, dispatch])
+
+  useEffect(() => {
     if (currentQuestion) {
       const { questionHash } = currentQuestion;
       dispatch(removeQuestion(questionHash));
     }
   }, [score, chances, dispatch])
-
-  useEffect(() => {
-    if (status === FetchQuestionStatus.Idle) {
-      console.log('1 ', remainingQuestions)
-
-      const nextQuestion = remainingQuestions[0];
-      // filter here from existing
-      setCurrentQuestion(nextQuestion);
-    }
-  }, [remainingQuestions, status])
 
   useEffect(() => {
     const shouldLoad = !remainingQuestions.length;

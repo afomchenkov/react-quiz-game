@@ -66,3 +66,9 @@ export const generateStrHash = (text: string): string => {
 
   return String(hash);
 }
+
+export const capitalise = (text: string) => text.charAt(0).toUpperCase() + text.slice(1);
+
+export const hasUserAnsweredQuestion = (userAnsweredQuestions: string[] = [], questionHash: string): boolean => {
+  return userAnsweredQuestions.includes(questionHash);
+}
