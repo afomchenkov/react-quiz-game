@@ -5,4 +5,5 @@
   justify-content: center;
   min-height: 100vh;
   background-color: var(--background-color-main);
+  overflow-x: hidden;
 }

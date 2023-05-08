@@ -5,6 +5,7 @@
   justify-content: flex-end;
   align-items: center;
   padding: .5em 2em;
+  overflow-x: hidden;
 }
 
 .qz-navbar__button {
@@ -18,10 +19,30 @@
 }
 
 .qz-navbar > section {
+  display: flex;
   font-size: 16px;
   width: 100%;
 }
 
 section > span {
   margin: 10px;
+}
+
+@media (max-width: 767px) {
+  .qz-navbar {
+    flex-direction: column;
+  }
+
+  .qz-navbar__button {
+    margin: .5em .1em;
+  }
+
+  .qz-navbar > section {
+    flex-direction: column;
+    font-size: 14px;
+  }
+
+  section > span {
+    margin: .5em .1em;
+  }
 }
