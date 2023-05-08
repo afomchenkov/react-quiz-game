@@ -25,12 +25,12 @@ const ErrorPlaceholder: FC = () => {
 const QuizPage: FC = () => {
   const { currentQuestion, status } = useCurrentQuestion();
 
-  if (status === FetchQuestionStatus.Loading || !currentQuestion) {
-    return <Overlay />
-  }
-
   if (status === FetchQuestionStatus.Failed) {
     return <ErrorPlaceholder />
+  }
+
+  if (status === FetchQuestionStatus.Loading || !currentQuestion) {
+    return <Overlay />
   }
 
   const { question } = currentQuestion;

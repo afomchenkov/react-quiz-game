@@ -32,6 +32,8 @@ export const questionsSlice = createSlice({
     },
     removeQuestion: (state, action) => {
       const questionHashToRemove = action.payload;
+
+      // removes all duplicate questions within the same bulk response if any
       state.remainingQuestions = state.remainingQuestions.filter(item => {
         return item.questionHash !== questionHashToRemove;
       });

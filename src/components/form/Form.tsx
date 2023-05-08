@@ -1,32 +1,52 @@
 import { FC } from 'react';
 import { useForm, SubmitHandler, FieldValues } from 'react-hook-form';
-import { debugLog, LogType } from '../../utils';
+import { debugLog, LogType, generateSHA1Hash } from '../../utils';
 import { useAppDispatch } from '../../store';
-import { increaseScore } from '../../store/userSlice';
+import {
+  increaseScore,
+  decreaseChances,
+  saveAnsweredQuestion,
+  saveFailedQuestion,
+} from '../../store/userSlice';
 import { QuizQuestion } from '../../types';
 import './Form.css';
 
 type FormProps = {
-  onSubmit?: SubmitHandler<FieldValues>
   question: QuizQuestion
+  onSubmit?: SubmitHandler<FieldValues>
 }
 
-const Form: FC<FormProps> = ({ question, onSubmit }) => {
+const Form: FC<FormProps> = ({ question }) => {
+  const { questionHash, answerSha1 } = question;
   const dispatch = useAppDispatch();
 
-  const { register, handleSubmit, formState: { errors } } = useForm({
+  const { register, handleSubmit, setValue, formState: { errors }, getValues } = useForm({
     defaultValues: {
       answer: '',
     }
   });
 
-  const handleFormSubmit = (data: FieldValues) => {
+  const isCorrectAnswer = async (answer: string) => {
+    const currentAnswerSha1 = await generateSHA1Hash(answer);
+    return currentAnswerSha1 === answerSha1;
+  }
+
+  // Handle only user answer here, set corresponding user score/chances and save answen to state
+  const handleFormSubmit = async (): Promise<void> => {
     if (errors.answer) {
       debugLog(JSON.stringify(errors), LogType.Error)
       return;
     }
-    dispatch(increaseScore());
-    onSubmit?.(data);
+
+    const isCorrect = await isCorrectAnswer(getValues('answer'));
+    if (isCorrect) {
+      dispatch(increaseScore());
+    } else {
+      dispatch(decreaseChances());
+      dispatch(saveFailedQuestion(questionHash));
+    }
+    dispatch(saveAnsweredQuestion(questionHash));
+    // setValue('answer', '');
   };
 
   return (
