@@ -46,7 +46,7 @@ const Form: FC<FormProps> = ({ question }) => {
       dispatch(saveFailedQuestion(questionHash));
     }
     dispatch(saveAnsweredQuestion(questionHash));
-    // setValue('answer', '');
+    setValue('answer', '');
   };
 
   return (

@@ -9,7 +9,7 @@
 
 .qz-navbar__button {
   padding: 5px 15px;
-  background: #ccc;
+  background: var(--border-color-1);
   border: 0 none;
   cursor: pointer;
   -webkit-border-radius: 5px;

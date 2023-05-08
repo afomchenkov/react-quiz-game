@@ -12,7 +12,7 @@
 
 .qz-form input[type=text] {
   padding: 5px;
-  border: 2px solid #ccc;
+  border: 2px solid var(--border-color-1);
   -webkit-border-radius: 5px;
   border-radius: 5px;
 }
@@ -23,7 +23,7 @@
 
 .qz-form input[type=submit] {
   padding: 5px 15px;
-  background: #ccc;
+  background: var(--border-color-1);
   border: 0 none;
   cursor: pointer;
   -webkit-border-radius: 5px;

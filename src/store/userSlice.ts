@@ -30,12 +30,19 @@ export const userSlice = createSlice({
       const { questionHash } = action.payload;
       state.failedQuestions.push(questionHash);
     },
+    flushScore: (state) => {
+      state.score = 0;
+      state.chances = 3;
+      state.answeredQuestions = []
+      state.failedQuestions = []
+    }
   },
 });
 
 export const {
   increaseScore,
   decreaseChances,
+  flushScore,
   saveAnsweredQuestion,
   saveFailedQuestion,
 } = userSlice.actions;
