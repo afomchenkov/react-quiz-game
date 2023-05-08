@@ -2,8 +2,14 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  padding-top: 15vh;
   min-height: 100vh;
   background-color: var(--background-color-main);
   overflow-x: hidden;
+}
+
+@media (max-width: 767px) {
+  .qz-main {
+    padding-top: 8vh;
+  }
 }
