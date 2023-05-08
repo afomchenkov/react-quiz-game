@@ -1,6 +1,6 @@
 import { sha1 } from 'crypto-hash';
 
-const IS_LOGGING_ENABLED = true;
+const IS_LOGGING_ENABLED = false;
 
 export enum LogType {
   Warning = 'warning',
