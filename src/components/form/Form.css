@@ -28,5 +28,5 @@
   cursor: pointer;
   -webkit-border-radius: 5px;
   border-radius: 5px;
-  color: var(--text-primary);
+  color: var(--text-primary-color);
 }
