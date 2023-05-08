@@ -23,11 +23,11 @@ export const userSlice = createSlice({
       state.chances -= 1;
     },
     saveAnsweredQuestion: (state, action) => {
-      const { questionHash } = action.payload;
+      const questionHash = action.payload;
       state.answeredQuestions.push(questionHash);
     },
     saveFailedQuestion: (state, action) => {
-      const { questionHash } = action.payload;
+      const questionHash = action.payload;
       state.failedQuestions.push(questionHash);
     },
     flushScore: (state) => {
