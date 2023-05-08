@@ -10,6 +10,13 @@ export enum LogType {
 
 export type DebugLog = (message: string, logType: LogType) => void
 
+/**
+ * Logs the message
+ *
+ * @param message
+ * @param logType 
+ * @returns 
+ */
 export const debugLog: DebugLog = (message = '', logType = LogType.Log) => {
   if (!message || !IS_LOGGING_ENABLED) {
     return;
@@ -30,4 +37,32 @@ export const debugLog: DebugLog = (message = '', logType = LogType.Log) => {
   }
 }
 
-export const generateHash = (text: string): Promise<string> => sha1(text);
+/**
+ * Generates SHA1 hash to verify the answer
+ *
+ * @param text
+ * @returns 
+ */
+export const generateSHA1Hash = (text: string): Promise<string> => sha1(text);
+
+/**
+ * Generates hash code to persist the questions as SHA1 is async and expensice to run
+ *
+ * @param text
+ * @returns 
+ */
+export const generateStrHash = (text: string): string => {
+  let hash = 0;
+
+  if (test.length === 0) {
+    return String(hash);
+  }
+
+  for (let i = 0; i < text.length; i++) {
+    const chr = text.charCodeAt(i);
+    hash = ((hash << 5) - hash) + chr;
+    hash |= 0; // Convert to 32bit integer
+  }
+
+  return String(hash);
+}

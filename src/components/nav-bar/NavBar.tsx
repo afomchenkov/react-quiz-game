@@ -5,12 +5,16 @@ import {
   setLight,
   getCurrentTheme,
 } from '../../store/themeSlice';
+import {
+  getCurrentUser
+} from '../../store/userSlice'
 import { Theme } from '../../types';
 import './NavBar.css';
 
 const NavBar = () => {
   const dispatch = useDispatch();
   const currentTheme = useSelector(getCurrentTheme);
+  const { score, chances } = useSelector(getCurrentUser);
 
   const handleThemeToggle = () => {
     if (currentTheme === Theme.Dark) {
@@ -27,12 +31,14 @@ const NavBar = () => {
 
   return (
     <header className='qz-navbar'>
+      <section>
+        <span>Score: {score}</span>
+        <span>Chances: {chances}</span>
+      </section>
       <nav>
-        <section>
-          <button onClick={handleThemeToggle}>
-            {getThemeToToggleText()}
-          </button>
-        </section>
+        <button className='qz-navbar__button' onClick={handleThemeToggle}>
+          {getThemeToToggleText()}
+        </button>
       </nav>
     </header>
   );

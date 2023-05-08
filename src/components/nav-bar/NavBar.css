@@ -1,8 +1,26 @@
 .qz-navbar {
   min-height: 4em;
-  background-color: var(--background-color-main);
+  background-color: var(--background-color-header);
   display: flex;
   justify-content: flex-end;
   align-items: center;
   padding: .5em 2em;
+}
+
+.qz-navbar__button {
+  padding: 5px 15px;
+  background: #ccc;
+  border: 0 none;
+  cursor: pointer;
+  -webkit-border-radius: 5px;
+  border-radius: 5px;
+  color: var(--text-primary);
+}
+
+.qz-navbar > section {
+  width: 100%;
+}
+
+section > span {
+  margin: 10px;
 }

@@ -1,28 +1,20 @@
-import { useState, FC } from 'react';
-import Loader from '../../components/loader/Loader'
-import { generateHash } from '../../utils';
+import { FC, useEffect } from 'react';
+import Form from '../form/Form';
+import { useCurrentQuestion } from '../../hooks';
+import './Page.css';
 
 const QuizPage: FC = () => {
-  const [input, setInput] = useState('');
+  const { question, answer } = useCurrentQuestion();
 
-  const handleInputChange = (event: any) => {
-    setInput(event.target.value);
-  }
-
-  const handleSubmit = async () => {
-    const hash = await generateHash(input);
-    console.log('SUBMIT: ', input, hash);
-    setInput('');
-  }
+  useEffect(() => {
+    console.log('QUIZ PAGE: ', question, answer);
+  }, [question, answer])
 
   return (
-    <>
-      <h3>quiz</h3>
-      <Loader />
-
-      <input value={input} onChange={handleInputChange} />
-      <button onClick={handleSubmit}>Submit</button>
-    </>
+    <section className='qz-card'>
+      <h3>{question}</h3>
+      <Form />
+    </section>
   );
 };
 

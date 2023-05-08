@@ -1,6 +1,12 @@
 :root {
-  --background-color-main: rgb(246, 246, 246);
-  --text-primary: black;
+  --background-color-header: #F3F4F6;
+  --background-color-main: #FFFFFF;
+  --background-color-input: #FFFFFF;
+  --background-card-color: #FFFFFF;
+  --text-primary: #2c2c2c;
+  --border-color-main: #e8e8e8;
+  /*  */
+
   --text-secondary: royalblue;
   --accent: purple;
   --color-bg: #f0f0f0;
@@ -13,8 +19,13 @@
 }
 
 [data-theme='dark'] {
-  --background-color-main: #5f5f5f;
-  --text-primary: white;
+  --background-color-header: #374151;
+  --background-color-main: rgb(35 39 47 / .8);
+  --background-color-input: #99A1B3;
+  --background-card-color: #6f7882d6;
+  --text-primary: #2c2c2c;
+  --border-color-main: #a7a7a763;
+  /*  */
   --text-secondary: grey;
   --accent: darkred;
 }
