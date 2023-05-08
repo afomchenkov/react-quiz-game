@@ -1,0 +1,21 @@
+.qz-card {
+  display: flex;
+  flex-direction: column;
+  width: 40em;
+  min-height: 25em;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--border-color-main);
+  background-color: var(--background-card-color);
+  border-radius: 5px;
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+}
+
+.gz-card__title {
+  margin: 1.5em;
+}
+
+.gz-card__result-card {
+  display: flex;
+  flex-direction: column;
+}
