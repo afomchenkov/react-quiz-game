@@ -3,11 +3,11 @@ import { Theme } from '../types';
 import { RootState } from './index';
 
 export type ThemeState = {
-  selectedTheme: Theme;
+  selectedTheme: Theme
 }
 
 const initialState: ThemeState = {
-  selectedTheme: Theme.Light,
+  selectedTheme: Theme.Light
 };
 
 export const themeSlice = createSlice({

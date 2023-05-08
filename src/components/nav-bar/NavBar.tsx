@@ -1,20 +1,18 @@
 import { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
 import {
   setDark,
   setLight,
   getCurrentTheme,
 } from '../../store/themeSlice';
-import {
-  getCurrentUser
-} from '../../store/userSlice'
+import { getCurrentUser } from '../../store/userSlice';
+import { useAppSelector, useAppDispatch } from '../../store';
 import { Theme } from '../../types';
 import './NavBar.css';
 
 const NavBar = () => {
-  const dispatch = useDispatch();
-  const currentTheme = useSelector(getCurrentTheme);
-  const { score, chances } = useSelector(getCurrentUser);
+  const dispatch = useAppDispatch();
+  const currentTheme = useAppSelector(getCurrentTheme);
+  const { score, chances } = useAppSelector(getCurrentUser);
 
   const handleThemeToggle = () => {
     if (currentTheme === Theme.Dark) {

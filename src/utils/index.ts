@@ -54,7 +54,7 @@ export const generateSHA1Hash = (text: string): Promise<string> => sha1(text);
 export const generateStrHash = (text: string): string => {
   let hash = 0;
 
-  if (test.length === 0) {
+  if (text.length === 0) {
     return String(hash);
   }
 
