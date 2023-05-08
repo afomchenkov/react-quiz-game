@@ -27,13 +27,13 @@ const NavBar = () => {
   }
 
   return (
-    <header className='qz-navbar'>
-      <section>
+    <header className='qz-navbar' data-test-id='qz-nav-bar'>
+      <section data-test-id='qz-score-bar'>
         <span>Score: {score}</span>
         <span>Chances: {chances}</span>
       </section>
       <nav>
-        <button className='qz-navbar__button' onClick={handleThemeToggle}>
+        <button className='qz-navbar__button' onClick={handleThemeToggle} data-test-id='qz-theme-toggler'>
           {getThemeToToggleText()}
         </button>
       </nav>

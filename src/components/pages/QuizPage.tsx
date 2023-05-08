@@ -8,7 +8,7 @@ import './Page.css';
 
 const Overlay: FC = () => {
   return (
-    <section className='qz-card'>
+    <section className='qz-card' data-test-id='qz-quiz-loader'>
       <span>Loading...</span>
       <Loader />
     </section>
@@ -17,7 +17,7 @@ const Overlay: FC = () => {
 
 const ErrorPlaceholder: FC = () => {
   return (
-    <section className='qz-card'>
+    <section className='qz-card' data-test-id='qz-quiz-error'>
       <span>An error has occurred, please try again later...</span>
     </section>
   )
@@ -38,7 +38,7 @@ const QuizPage: FC = () => {
   const { question } = currentQuestion;
 
   return (
-    <section className='qz-card'>
+    <section className='qz-card' data-test-id='qz-quiz-card'>
       <div className='gz-card__title'>
         <h3>{question}</h3>
       </div>
