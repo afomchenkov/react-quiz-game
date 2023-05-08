@@ -46,7 +46,7 @@ export const debugLog: DebugLog = (message = '', logType = LogType.Log) => {
 export const generateSHA1Hash = (text: string): Promise<string> => sha1(text);
 
 /**
- * Generates hash code to persist the questions as SHA1 is async and expensice to run
+ * Generates hash code to persist the questions as SHA1 is async and expensive to run
  *
  * @param text
  * @returns 

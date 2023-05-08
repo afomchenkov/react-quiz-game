@@ -16,6 +16,12 @@ const Layout: FC = () => {
     }
   }, [chances, navigate])
 
+  useEffect(() => {
+    if (chances === 3) {
+      navigate('/');
+    }
+  }, [])
+
   return (
     <main className='qz-main'>
       <Routes>
