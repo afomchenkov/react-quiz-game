@@ -1,12 +1,32 @@
 import { QUESTIONS_URL } from '../constants';
-import { QuizQuestion } from '../models';
+import { FetchQuestionsResponse, QuizQuestion } from '../types';
 import { debugLog, LogType } from '../utils';
 
 export const request = async <TResponse>(
   url: string,
-  config: RequestInit = {}
+  customConfig: RequestInit = {},
+  body?: Record<string, unknown>
 ): Promise<TResponse> => {
-  const response = await fetch(url, config)
+  const headers = { 'Content-Type': 'application/json' }
+
+  const config = {
+    method: body ? 'POST' : 'GET',
+    ...customConfig,
+    headers: {
+      ...headers,
+      ...customConfig.headers,
+    },
+  };
+
+  if (body) {
+    config.body = JSON.stringify(body);
+  }
+
+  const response = await window.fetch(url, config);
+  if (!response.ok) {
+    throw new Error(response.statusText);
+  }
+
   const data = await response.json();
   return data as TResponse;
 }
@@ -18,12 +38,14 @@ export const api = {
     request<TResponse>(url, { method: 'POST', body }),
 }
 
-export const fetchQuestions = async (): Promise<QuizQuestion[]> => {
+export const fetchQuestions = async (): Promise<FetchQuestionsResponse<QuizQuestion>> => {
   try {
-    return api.get<QuizQuestion[]>(QUESTIONS_URL);
+    return api.get<FetchQuestionsResponse<QuizQuestion>>(QUESTIONS_URL);
   } catch (error) {
     const { message } = error as Error
     debugLog(message, LogType.Error);
-    return Promise.resolve([]);
+    return Promise.resolve({
+      questions: []
+    });
   }
 }

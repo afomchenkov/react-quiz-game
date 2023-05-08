@@ -1,13 +1,19 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { useSelector } from 'react-redux';
+import NavBar from './components/nav-bar/NavBar';
+import Layout from './components/layout/Layout';
+
+import { getCurrentTheme } from './store/themeSlice';
+
 import './App.css';
 
 const App = () => {
+  const theme = useSelector(getCurrentTheme);
+
   return (
-    <div className="App">
-      <header className="App-header">
-
-
-      </header>
+    <div data-theme={theme}>
+      <NavBar />
+      <Layout />
     </div>
   );
 }

@@ -1,0 +1,8 @@
+.qz-navbar {
+  min-height: 4em;
+  background-color: var(--background-color-main);
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  padding: .5em 2em;
+}
