@@ -1,11 +1,12 @@
 .qz-navbar {
   min-height: 4em;
-  background-color: var(--background-color-header);
   display: flex;
   justify-content: flex-end;
   align-items: center;
   padding: .5em 2em;
   overflow-x: hidden;
+  background-color: var(--background-color-header);
+  border-bottom: 1px solid rgba(99, 99, 99, 0.2);
 }
 
 .qz-navbar__button {
@@ -16,11 +17,18 @@
   -webkit-border-radius: 5px;
   border-radius: 5px;
   color: var(--text-primary-color);
+  min-height: 2em;
+  font-size: 1em;
+}
+
+.qz-navbar__button:hover {
+  box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.5);
+  transition: box-shadow 0.1s ease-in-out;
 }
 
 .qz-navbar > section {
   display: flex;
-  font-size: 16px;
+  font-size: 1.2em;
   width: 100%;
 }
 
@@ -39,7 +47,7 @@ section > span {
 
   .qz-navbar > section {
     flex-direction: column;
-    font-size: 14px;
+    font-size: 1em;
   }
 
   section > span {

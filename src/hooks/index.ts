@@ -3,13 +3,12 @@ import { getCurrentUser } from '../store/userSlice';
 import { useAppSelector } from '../store';
 import { useAppDispatch } from '../store';
 import { QuizQuestion, FetchQuestionStatus } from '../types';
-import { 
+import {
   loadQuestions,
   removeQuestion,
   selectQuestions,
 } from '../store/questionsSlice';
 import { hasUserAnsweredQuestion } from '../utils';
-
 
 type UseCurrentQuestion = () => {
   currentQuestion: QuizQuestion | null

@@ -52,7 +52,12 @@ const Form: FC<FormProps> = ({ question }) => {
 
   return (
     <form className='qz-form' onSubmit={handleSubmit(handleFormSubmit)} data-test-id='qz-form'>
-      <input type='text' placeholder='Answer...' {...register('answer', { required: true, maxLength: 300 })} required />
+      <input
+        type='text'
+        placeholder='Answer...'
+        {...register('answer', { required: true, maxLength: 300 })}
+        data-test-id='qz-form-input'
+        required />
       <input type='submit' value={'Submit'} data-test-id='qz-form-submit'/>
     </form>
   );

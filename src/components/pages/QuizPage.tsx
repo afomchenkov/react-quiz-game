@@ -40,7 +40,7 @@ const QuizPage: FC = () => {
   return (
     <section className='qz-card' data-test-id='qz-quiz-card'>
       <div className='gz-card__title'>
-        <h3>{question}</h3>
+        <h3 data-test-id='qz-quiz-question'>{question}</h3>
       </div>
       <Form question={currentQuestion}/>
     </section>
