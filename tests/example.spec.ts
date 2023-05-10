@@ -75,7 +75,6 @@ test.describe('Should test the quiz app', () => {
     await page.locator('text=Gathered points: 0').waitFor();
   });
 
-
   test('should submit valid answers and no duplicates should be encountered', async ({ page }) => {
     await beforeEach(page);
 
@@ -90,13 +89,14 @@ test.describe('Should test the quiz app', () => {
       const questionElement = page.locator('data-test-id=qz-quiz-question');
       const question = await questionElement.textContent();
 
-      const { answerPlainText, answerSha1 } = questions.find(q => q.question === question)!;
+      const { answerPlainText, question: mock } = questions.find(q => q.question === question)!;
 
-      if (answeredQuestions.includes(answerSha1)) {
+      // answerSha1 - not reliable, there could be same answers/sha1 for different questions but it's not a duplicate
+      if (answeredQuestions.includes(mock)) {
         throw new Error('Duplicate question found');
       }
 
-      answeredQuestions.push(answerSha1);
+      answeredQuestions.push(mock);
       await formInput.fill(answerPlainText);
       await submitButton.click();
     }
