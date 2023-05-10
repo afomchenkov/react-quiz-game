@@ -6,16 +6,19 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 ```
 npm install
+npx playwright install
 npm start
 ```
 
 ## To run tests
 ```
+npm start
 npm run test:e2e
 ```
 
 ## To run tests in UI mode
 ```
+npm start
 npm run test:e2e:debug
 ```
 
