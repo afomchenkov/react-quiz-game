@@ -4,7 +4,6 @@ import { RootState } from './index';
 
 export type UserState = User;
 
-// preload state from persistent storage after refreshing the page
 const initialState: UserState = {
   score: 0,
   chances: 3,
