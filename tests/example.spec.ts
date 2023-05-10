@@ -86,7 +86,6 @@ test.describe('Should test the quiz app', () => {
     await page.locator('text=Score: 0').waitFor();
     await page.locator('text=Chances: 3').waitFor();
 
-
     const submitAnswer = async () => {
       const questionElement = page.locator('data-test-id=qz-quiz-question');
       const question = await questionElement.textContent();
@@ -102,11 +101,11 @@ test.describe('Should test the quiz app', () => {
       await submitButton.click();
     }
 
-    for (let i = 0; i < 30; ++i) {
+    for (let i = 0; i < 100; ++i) {
       await submitAnswer();
     }
 
-    await page.locator('text=Score: 30').waitFor();
+    await page.locator('text=Score: 100').waitFor();
     await page.locator('text=Chances: 3').waitFor();
   });
 });
